@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hover:hover{
+  background-color: antiquewhite;
+  color:black
+}
+.linergreed{
+ background: linear-gradient(60deg, black,transparent)
+}
+.scrollWidth{
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+.movies-grid{
+  min-height:400px;
+  height: auto;
+  grid-template-rows: auto;
+}
+

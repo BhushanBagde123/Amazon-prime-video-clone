@@ -1,0 +1,7 @@
+.active{
+    background-color: black;
+    color: white;
+    background: linear-gradient(45deg, black,white);
+    border-radius: 6px;
+
+}
