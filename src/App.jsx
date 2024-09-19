@@ -50,18 +50,8 @@ const router = createBrowserRouter([
     path: '/detail/:id',
     element: <Detail />,
   },
-  {
-    path: '/video/:id',
-    element: <Vedio />,
-  },
-  {
-    path: '/login',
-    element: <Login />,
-  },
-  {
-    path: '/signup',
-    element: <Signup />,
-  },
+  
+ 
   {
     path: '/addmovie',
     element: <Addmovies />,
@@ -71,6 +61,18 @@ const router = createBrowserRouter([
     element: <Tvcategory />,
   },
 ]
+},
+{
+  path: '/login',
+  element: <Login />,
+},
+{
+  path: '/signup',
+  element: <Signup />,
+},
+{
+  path: '/video/:id',
+  element: <Vedio />,
 }
 ]);
 

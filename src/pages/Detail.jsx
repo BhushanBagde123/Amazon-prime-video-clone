@@ -1,13 +1,18 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect,useContext } from 'react'
 
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom';
 import { getDoc,doc } from 'firebase/firestore';
 import { fireDb } from '../firebase/Firebase';
+import Slider from '../component/Slider';
+import  Mycontext from '../context/Mycontext'
 
 function Detail() {
   const [product,setProduct]=useState('');
+ const [moviesDisplay,setMoviesDisplay]=useState([])
     const {id}=useParams();// useParams conatin url name of item id
+    const context = useContext(Mycontext);
+    const { myst, horror, romance,drama } = context; 
    
     const getProductData =async()=>{
    
@@ -23,10 +28,30 @@ function Detail() {
     }
     
     useEffect(()=>{
+      if(product){
+        if(product.category ==="mystery thrill"){
+          setMoviesDisplay([...myst])
+    
+        }
+        else if(product.category ==="horror"){
+          setMoviesDisplay([...horror]);
+        }
+        else if(product.category==="romance"){
+          setMoviesDisplay([...romance]);
+        }
+        else if(product.category==="drama"){
+          setMoviesDisplay([...drama]);
+        }
+      }
+
+    },[product,myst,horror,drama,romance])
+    
+    useEffect(()=>{
         getProductData()
-    },[])
+    },[id])
   return (
-    // display movies data from firebase
+    <>
+    {/* // display movies data from firebase */}
     <div className={`w-full h-[700px] bg-cover bg-center relative  `} style={{ backgroundImage: `url(${product.coverImg})` }}>
     <div className=' w-full h-full absolute inset-0 bg-black linergreed'>
     <div className='w-1/2 px-7  py-5'>
@@ -56,10 +81,13 @@ function Detail() {
     
     </div>
      
-
-
+   
     </div>
-
+    <div className='w-full h-16 p-3 '>
+      <h1 className='text-2xl font-bold capitalize px-3'>related movies</h1>
+    </div>
+    <Slider moviesDisplay={moviesDisplay}/>
+    </>
   )
 }
 

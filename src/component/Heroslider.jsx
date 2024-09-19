@@ -1,14 +1,18 @@
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './HeroSlider.css';
 import { PiSpeakerSimpleLowLight, PiSpeakerSimpleSlash } from "react-icons/pi";
+import ArrowButton from './ArrowButton';
+
 
 const HeroSlider = () => {
   const [hover, setHover] = useState(null);
   const [voice, setVoice] = useState(true);
+  const slider =useRef();
+  const videoref =useRef();
 
   const controller = () => {
     setVoice(!voice);
@@ -17,11 +21,17 @@ const HeroSlider = () => {
   const handleMouseEnter = useCallback((id) => {
     setHover(id);
   }, []);
-
-  const handleMouseLeave = useCallback(() => {
+  const handelMouseLeave =()=>{
     setHover(null);
-  }, []);
+  }
 
+  const handleVedioEnd =()=>{
+   
+    if (slider.current) {
+      slider.current.slickNext(); // Move to next slide
+    }
+  }
+  
   const heroItems = [
     {
       id: 1,
@@ -70,30 +80,34 @@ const HeroSlider = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 5000,
-    arrows: false,
+    arrows: true,
+    nextArrow: <ArrowButton direction="next"/>, 
+    prevArrow: <ArrowButton direction="prev"/>, 
   };
 
   return (
     <div className="relative w-full h-[600px] overflow-hidden cursor-pointer">
-      <Slider {...settings}>
+      <Slider {...settings} ref={slider}>
         {heroItems.map((item) => (
           <div 
             key={item.id} 
             className="relative" 
-            onMouseEnter={() => handleMouseEnter(item.id)} 
-            onMouseLeave={handleMouseLeave}
+            onMouseEnter={() => handleMouseEnter(item.id)}
+            onMouseLeave={handelMouseLeave} 
+           
           >
             <div
               className="h-[550px] bg-cover bg-center"
               style={{ backgroundImage: `url(${item.imageUrl})` }}
             >
               {hover === item.id && (
-                <video
+                <video ref={videoref}
                   src={item.vediourl}
                   className="absolute hidden lg:block inset-0 object-cover w-full h-full linergreed"
                   autoPlay
                   muted={voice}
-                  loop
+                  onEnded={handleVedioEnd}
+                  
                 />
               )}
               <div className="absolute inset-0 bg-black linergreed"></div>
