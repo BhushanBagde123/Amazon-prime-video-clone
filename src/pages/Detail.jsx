@@ -54,9 +54,9 @@ function Detail() {
     {/* // display movies data from firebase */}
     <div className={`w-full h-[700px] bg-cover bg-center relative  `} style={{ backgroundImage: `url(${product.coverImg})` }}>
     <div className=' w-full h-full absolute inset-0 bg-black linergreed'>
-    <div className='w-1/2 px-7  py-5'>
+    <div className='w-[70%] px-7  py-5'>
     <span><img className='w-14' src="https://m.media-amazon.com/images/G/01/digital/video/merch/subs/benefit-id/m-r/Prime/logos/channels-logo-color._CB554929912_SY52.5_FMpng_.png" alt="" /></span>
-    <div className='mt-8 capitalize font-bold'>
+    <div className='mt-8  capitalize font-bold'>
       <h1 className='text-5xl font-bold'>{product.name}</h1>  
     </div>
     <div className='mt-8 text-xl capitalize font-bold'>

@@ -24,12 +24,12 @@ const Slider = ({ moviesDisplay }) => {
         <div className='relative w-full h-64'>
             <button
                 onClick={prevButton}
-                className='hidden md:flex items-center justify-center top-6 z-10 w-16 h-[70%] bg-transparent rounded-full absolute'>
+                className='hidden md:flex items-center justify-center  left-0 top-4 z-10 w-16 h-[70%] bg-transparent rounded-full absolute'>
                 <FaArrowLeft />
             </button>
             <button
                 onClick={nextButton}
-                className='hidden md:flex w-16 h-[70%] right-0 top-6 justify-center z-10 rounded-full items-center bg-transparent absolute'>
+                className='hidden md:flex w-16 h-[70%] right-0 top-4 justify-center z-10 rounded-full items-center bg-transparent absolute'>
                 <FaArrowRight />
             </button>
 
