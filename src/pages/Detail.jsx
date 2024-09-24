@@ -6,6 +6,7 @@ import { getDoc,doc } from 'firebase/firestore';
 import { fireDb } from '../firebase/Firebase';
 import Slider from '../component/Slider';
 import  Mycontext from '../context/Mycontext'
+import { IoAdd } from "react-icons/io5";
 
 function Detail() {
   const [product,setProduct]=useState('');
@@ -74,8 +75,9 @@ function Detail() {
     <Link to={`/moviecategory/${product.category}`}><li>{product.category}</li></Link>  
       
     </div>
-    <div className='mt-9'>
+    <div className='mt-9 flex gap-3 items-center'>
     <Link to={`/video/${id}`}><button className='w-28 h-10 font-bold rounded-md capitalize bg-slate-500'>trailer</button></Link>
+    <span className='w-14 h-14 bg-slate-500 font-bold  flex justify-center items-center rounded-full cursor-pointer'><IoAdd size={38}/></span>
     </div>
     </div>
     

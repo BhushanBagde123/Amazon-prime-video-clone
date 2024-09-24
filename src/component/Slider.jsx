@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom'; // Make sure to have react-router-dom installed
 
-const Slider = ({ moviesDisplay }) => { 
+const Slider = ({ moviesDisplay,topTenMovies,color}) => { 
     const scrollDiv = useRef(null); // To reference the scrollable div
    
 
@@ -45,6 +45,21 @@ const Slider = ({ moviesDisplay }) => {
                         </Link>
                     </div>
                 ))}
+                {topTenMovies && topTenMovies.map((item, index) => (
+  <div key={item.id} className='flex w-80 h-[80%]'>
+    <div className={`w-auto text-center flex items-center justify-center text-6xl font-extrabold shrink-0 ${color === index ? "text-white" : "opacity-50"}`}>
+      {index + 1}
+    </div>
+    <div
+      onClick={() => handleMovieSelection(item, index)} // Pass the entire movie object
+      className={`w-72 h-[100%] shrink-0 cursor-pointer rounded-md`}
+      style={{ backgroundImage: `url(${item.img})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+    >
+    </div>
+  </div>
+))}
+
+                
             </div>
         </div>
     );

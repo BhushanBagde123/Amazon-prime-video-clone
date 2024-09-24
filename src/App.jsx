@@ -14,6 +14,7 @@ import Mystate from './context/Mystate';
 import Addmovies from './pages/Addmovies';
 import Tvcategory from './pages/Tvcategory';
 import Layout from './layout/Layout';
+import Wishlist from './pages/Wishlist';
 
 // Create the router object
 const router = createBrowserRouter([
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
     path: '/tvshowscategory',
     element: <Tvcategory />,
   },
+  {
+    path:'/mystuff',
+    element:<Wishlist/>,
+  }
 ]
 },
 {
