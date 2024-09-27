@@ -27,20 +27,37 @@ function Moviecategory() {
   return (
  
       <div className='w-full h-auto mt-7'>
-        <h1 className='text-3xl p-3 font-bold text-white capitalize'>
+        <h1 className='lg:text-3xl text-2xl p-3 font-bold text-white capitalize'>
           {category}
         </h1>
 
         {/* Display filtered movies */}
-        <div className='w-full grid grid-cols-4 gap-5 p-3 pt-4 overflow-hidden mt-9 movies-grid'>
+        <div className='w-full grid lg:grid-cols-4 gap-5 p-3 pt-4  overflow-hidden mt-9 movies-grid'>
           {moviesToDisplay.length > 0 ? (
             moviesToDisplay.map((item, index) => (
-              <div key={item.id} className='w-72 h-full parent'>
+              <div key={item.id} className='lg:w-72 w-full flex h-full '>
                 <Link to={`/detail/${item.id}`}>
+                
                   <div
-                    className={`w-72 h-[150px] shrink-0 hover:scale-125 transition ease-in-out delay-150 cursor-pointer rounded-md ${index === 0 ? 'transform origin-left transition-transform duration-300 hover:scale-x-125 hover:scale-y-125' : ''}`}
+                    className={`w-72 h-[150px] hidden lg:block shrink-0 lg:hover:scale-125 transition ease-in-out delay-150 cursor-pointer rounded-md ${index === 0 ? 'transform origin-left transition-transform duration-300 hover:scale-x-125 hover:scale-y-125' : ''}`}
                     style={{ backgroundImage: `url(${item.img})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-                  />
+                  >
+                  </div>
+                  <div className='lg:hidden w-full h-[100px] capitalize cursor-pointer flex gap-2 '>
+                    <img className='w-44 h-[100px] shrink-0 rounded-lg' src={`${item.img}`} alt="" />
+                    <div>
+                    <h1 className='font-bold text-md'>{item.name}</h1>
+                    <span className='flex list-none gap-2 text-gray-500 font-semibold '>
+                    <li>{item.year}</li>
+                    <li>{item.time}</li>
+                   
+                    </span>
+                    </div>
+
+                  </div>
+                  
+                  
+                 
                 </Link>
               </div>
             ))

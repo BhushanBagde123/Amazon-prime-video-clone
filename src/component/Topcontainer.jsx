@@ -24,8 +24,12 @@ function Topcontainer({ show, movies }) {
   };
 
   return (
-    <div className='w-full h-[850px] text-white'>
-      <h1 className='text-3xl font-bold p-4 capitalize'>
+    <>
+     <h1 className=' text-xl font-bold px-4 capitalize lg:hidden'>
+        Top 10 {show || movies}
+      </h1>
+    <div className='w-full lg:h-[850px] text-white hidden lg:block'>
+      <h1 className='lg:text-3xl text-xl font-bold p-4 capitalize'>
         Top 10 {show || movies}
       </h1>
       <div className='w-full lg:h-[800px] relative'>
@@ -56,7 +60,7 @@ function Topcontainer({ show, movies }) {
         </div>
 
         {/* Thumbnail Section */}
-        <div className='w-full h-44 flex gap-10 overflow-auto overflow-y-hidden scrollWidth absolute bottom-0 items-center px-6'>
+        <div className='w-full h-44 lg:flex gap-10 overflow-auto hidden  overflow-y-hidden scrollWidth absolute bottom-0 items-center px-6'>
           {topTenMovies.map((item, index) => (
             <div key={item.id} className='flex w-80 h-full'>
               <div className={`w-auto text-center flex items-center justify-center text-6xl font-extrabold shrink-0 ${color === index ? "text-white" : "opacity-50"}`}>
@@ -71,11 +75,13 @@ function Topcontainer({ show, movies }) {
             </div>
           ))}
         </div>
-        <div className='w-full h-56 lg:hidden'>
-        <Slider topTenMovies={topTenMovies} color={color}/>
-        </div>
+       
       </div>
     </div>
+     <div className='w-full h-44 lg:hidden  flex items-center'>
+     <Slider topTenMovies={topTenMovies} />
+     </div>
+     </>
   );
 }
 

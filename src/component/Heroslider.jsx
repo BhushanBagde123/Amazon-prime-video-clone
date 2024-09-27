@@ -86,7 +86,7 @@ const HeroSlider = () => {
   };
 
   return (
-    <div className="relative w-full h-[600px] overflow-hidden cursor-pointer">
+    <div className="relative w-full lg:h-[600px] h-[300px] overflow-hidden cursor-pointer">
       <Slider {...settings} ref={slider}>
         {heroItems.map((item) => (
           <div 
@@ -97,30 +97,28 @@ const HeroSlider = () => {
            
           >
             <div
-              className="h-[550px] bg-cover bg-center"
-              style={{ backgroundImage: `url(${item.imageUrl})` }}
-            >
+              className="lg:h-[550px] h-[200px] bg-cover bg-center"
+              style={{ backgroundImage: `url(${item.imageUrl})` }}>
               {hover === item.id && (
                 <video ref={videoref}
                   src={item.vediourl}
                   className="absolute hidden lg:block inset-0 object-cover w-full h-full linergreed"
                   autoPlay
                   muted={voice}
-                  onEnded={handleVedioEnd}
-                  
-                />
+                  onEnded={handleVedioEnd} />
               )}
+              <img className='w-full h-full lg:hidden' src={`${item.imageUrl}`} alt="" />
               <div className="absolute inset-0 bg-black linergreed"></div>
               {hover && (
                 <button 
                   onClick={controller} 
-                  className="absolute left-[90%] flex justify-center items-center rounded-full top-24 w-12 h-12 bg-black opacity-40 "
+                  className="absolute left-[90%] hidden lg:flex justify-center items-center rounded-full top-24 w-12 h-12 bg-black opacity-40 "
                 >
                   {voice ? <PiSpeakerSimpleSlash size={24}  /> : <PiSpeakerSimpleLowLight size={24}/>}
                 </button>
               )}
               <div className="absolute bottom-0 p-8">
-                <h2 className="text-white text-3xl font-bold">{item.title}</h2>
+                <h2 className="text-white lg:text-3xl text-xl font-bold">{item.title}</h2>
               </div>
             </div>
           </div>

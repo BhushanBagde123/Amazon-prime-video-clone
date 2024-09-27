@@ -6,9 +6,13 @@
   background-color: antiquewhite;
   color:black
 }
-.linergreed{
- background: linear-gradient(60deg, black,transparent)
+.linergreedBottom{
+  background: linear-gradient(to top , black,  50%, transparent);
 }
+.linergreed{
+  background: linear-gradient(60deg,black ,transparent)
+}
+
 .scrollWidth{
   scrollbar-width: none;
   scroll-behavior: smooth;

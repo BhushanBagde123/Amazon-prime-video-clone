@@ -29,8 +29,8 @@ function Category({ horror=[],romance=[],mystTv=[],horrorTv=[],
   const tvShowDisplay =[...mystTv, ...horrorTv,...romanceTv,...dramaTv] // tv shows
 
   return (
-    <div className='w-full h-64 mt-7 relative'>
-      <div className='w-full flex gap-5 text-white font-bold text-xl capitalize px-6'>
+    <div className='w-full lg:h-64 h-56 lg:mt-7 relative '>
+      <div className='w-full flex gap-5 text-white font-bold lg:text-xl capitalize px-6'>
         <span>{displayMoviesCategory || displayTvCategory} {typeof movies === 'string' ? movies : ''} {typeof show === 'string' ? show : ''}</span>
         {/* condition renduring  and dynamic route*/}
         {displayMoviesCategory? <Link to={{pathname:`/moviecategory/${displayMoviesCategory.toLowerCase()}`}}> 
@@ -54,14 +54,14 @@ function Category({ horror=[],romance=[],mystTv=[],horrorTv=[],
       </button>
 
       {/* Scrollable Movie Section */}
-      <div ref={scrollDiv} className='w-full h-56 flex gap-7 scrollWidth overflow-x-auto  overflow-y-hidden items-center px-6'>
+      <div ref={scrollDiv} className='w-full lg:h-56  h-44 flex gap-7 scrollWidth overflow-x-auto overflow-y-hidden items-center px-6'>
       {/* data of the movies and tv shows */}
      {moviesDisplay.length>0?(
           moviesDisplay.map((item, index) => (
-            <div key={item.id} className='w-72 h-[80%] parent'>
+            <div key={item.id} className='w-72 h-[160px] lg:h-[80%] '>
               <Link to={`/detail/${item.id}`}>
                 <div
-                  className={`w-72 h-[80%] shrink-0 hover:scale-125 transition ease-in-out delay-150 cursor-pointer rounded-md ${index === 0 ? 'transform origin-left transition-transform duration-300 hover:scale-x-125 hover:scale-y-125' : ''}`}
+                  className={`w-72 h-[160px] md:h-[80%] shrink-0 lg:hover:scale-125 transition lg:ease-in-out lg:delay-150 cursor-pointer rounded-md ${index === 0 ? 'lg:transform origin-left lg:transition-transform lg:duration-300 lg:hover:scale-x-125 lg:hover:scale-y-125' : ''}`}
                   style={{ backgroundImage: `url(${item.img})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
                 />
               </Link>
@@ -69,10 +69,10 @@ function Category({ horror=[],romance=[],mystTv=[],horrorTv=[],
           ))
         ):(
           tvShowDisplay.map((item, index) => (
-            <div key={item.id} className='w-72 h-[80%] parent'>
+            <div key={item.id} className='w-72 h-[160px] lg:h-[80%]'>
               <Link to={`/detail/${item.id}`}>
                 <div
-                  className={`w-72 h-[80%] shrink-0 hover:scale-125 transition ease-in-out delay-150 cursor-pointer rounded-md ${index === 0 ? 'transform origin-left transition-transform duration-300 hover:scale-x-125 hover:scale-y-125' : ''}`}
+                  className={`w-72 h-[160px] md:h-[80%] shrink-0 md:hover:scale-125 md:transition md:ease-in-out md:delay-150 md:cursor-pointer rounded-md ${index === 0 ? 'md:transform md:origin-left md:transition-transform md:duration-300 md:hover:scale-x-125 md:hover:scale-y-125' : ''}`}
                   style={{ backgroundImage: `url(${item.img})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
                 />
               </Link>

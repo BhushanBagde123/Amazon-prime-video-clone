@@ -4,7 +4,7 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 function ArrowButton({onClick,direction}) {
   return (
     <div 
-    className={`absolute ${direction === 'next' ? 'right-5' : 'left-5'} top-1/2 transform -translate-y-1/2 z-10 cursor-pointer`}
+    className={`absolute ${direction === 'next' ? 'right-5' : 'left-5'} top-1/2 hidden lg:block transform -translate-y-1/2 z-10 cursor-pointer`}
     onClick={onClick}
   >
     {direction === 'next' ? 

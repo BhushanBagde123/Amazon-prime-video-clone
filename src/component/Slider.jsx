@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom'; // Make sure to have react-router-dom installed
 
-const Slider = ({ moviesDisplay,topTenMovies,color}) => { 
+const Slider = ({ moviesDisplay,topTenMovies}) => { 
     const scrollDiv = useRef(null); // To reference the scrollable div
    
 
@@ -34,28 +34,31 @@ const Slider = ({ moviesDisplay,topTenMovies,color}) => {
             </button>
 
             {/* Scrollable Movie Section */}
-            <div ref={scrollDiv} className='w-full h-56 flex gap-7 overflow-x-auto overflow-y-hidden scrollWidth items-center px-6'>
+            <div ref={scrollDiv} className='w-full h-56 flex gap-7 overflow-x-auto overflow-y-hidden scrollWidth items-center lg:px-4 px-6'>
                 {moviesDisplay && moviesDisplay.map((item, index) => (
                     <div key={item.id} className='w-72 h-[80%]'>
                         <Link to={`/detail/${item.id}`}>
                             <div
-                                className={`w-72 h-[80%] shrink-0 hover:scale-110 transition ease-in-out delay-150 cursor-pointer rounded-md ${index === 0 ? 'transform origin-left transition-transform duration-300 hover:scale-110' : ''}`}
+                                className={`w-72 h-[80%] shrink-0 lg:hover:scale-110 transition ease-in-out delay-150 cursor-pointer rounded-md ${index === 0 ? 'transform origin-left transition-transform duration-300 lg:hover:scale-110' : ''}`}
                                 style={{ backgroundImage: `url(${item.img})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
                             />
                         </Link>
                     </div>
                 ))}
                 {topTenMovies && topTenMovies.map((item, index) => (
-  <div key={item.id} className='flex w-80 h-[80%]'>
-    <div className={`w-auto text-center flex items-center justify-center text-6xl font-extrabold shrink-0 ${color === index ? "text-white" : "opacity-50"}`}>
+  <div key={item.id} className='flex w-96 h-[80%]  items-center'>
+
+    <div className={`w-auto text-center flex items-center justify-center text-6xl font-extrabold shrink-0 text-white`}>
       {index + 1}
     </div>
     <div
-      onClick={() => handleMovieSelection(item, index)} // Pass the entire movie object
-      className={`w-72 h-[100%] shrink-0 cursor-pointer rounded-md`}
+      className={`w-72 h-[80%] shrink-0 cursor-pointer rounded-md`}
       style={{ backgroundImage: `url(${item.img})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-    >
-    </div>
+    />
+      
+   
+  
+  
   </div>
 ))}
 
