@@ -13,11 +13,11 @@ function Category({ horror=[],romance=[],mystTv=[],horrorTv=[],
   const [scroll,setScroll]= useState(0);
   // for next button
   const nextButton = () => {
-   setScroll( scrollDiv.current.scrollBy(950,0));
+   setScroll( scrollDiv.current.scrollBy(1200,0));
   };
   // for prvious button
   const prevButton = () => {
-    setScroll(scrollDiv.current.scrollBy(-950,0));
+    setScroll(scrollDiv.current.scrollBy(-1200,0));
   };
 
   // for dynamic name of the category
@@ -44,37 +44,54 @@ function Category({ horror=[],romance=[],mystTv=[],horrorTv=[],
       {/* Navigation Buttons */}
       <button
         onClick={prevButton}
-        className='hidden md:flex items-center justify-center top-12 z-10 w-16 h-[70%] bg-transparent rounded-full absolute'>
+        className='hidden md:flex items-center justify-center top-12 z-30 w-16 h-[70%] bg-transparent rounded-full absolute'>
         <FaArrowLeft />
       </button>
       <button
         onClick={nextButton}
-        className='hidden md:flex w-16 h-[70%] right-0 top-12 justify-center z-10 rounded-full items-center bg-transparent absolute'>
+        className='hidden md:flex w-16 h-[70%] right-0 top-12 justify-center z-30 rounded-full items-center bg-transparent absolute'>
         <FaArrowRight />
       </button>
 
       {/* Scrollable Movie Section */}
-      <div ref={scrollDiv} className='w-full lg:h-56  h-44 flex gap-7 scrollWidth overflow-x-auto overflow-y-hidden items-center px-6'>
+      <div ref={scrollDiv} className='w-full lg:h-56 overflow-x-auto overflow-y-hidden  h-44 flex gap-7 scrollWidth  relative items-center px-6'>
       {/* data of the movies and tv shows */}
      {moviesDisplay.length>0?(
           moviesDisplay.map((item, index) => (
-            <div key={item.id} className='w-72 h-[160px] lg:h-[80%] '>
+            <div key={item.id} className='w-72 h-[160px] group  lg:h-[80%] relative '>
               <Link to={`/detail/${item.id}`}>
                 <div
-                  className={`w-72 h-[160px] md:h-[80%] shrink-0 lg:hover:scale-125 transition lg:ease-in-out lg:delay-150 cursor-pointer rounded-md ${index === 0 ? 'lg:transform origin-left lg:transition-transform lg:duration-300 lg:hover:scale-x-125 lg:hover:scale-y-125' : ''}`}
+                  className={`md:w-[270px] w-72 h-[160px] md:h-[80%] shrink-0 group-hover:opacity-90 sm:group-hover:opacity-0 transition cursor-pointer rounded-md `}
                   style={{ backgroundImage: `url(${item.img})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
                 />
+                <div className='opacity-0 absolute top-[-75px]  capitalize font-bold transition duration-400 z-20  overflow-visible w-full hidden sm:block  scale-0 group-hover:scale-125  group-hover:translate-x-[2vw] group-hover:translate-y-[6vw] group-hover:opacity-100 '>
+                <img className=' object-cover transition duration shadow-xl rounded-t-md w-full h-[12vw]' src={`${item.img}`} alt="" />
+                <div className='w-full'>
+                  <h1>{item.name}</h1>
+                 
+
+                </div>
+                </div>
               </Link>
+              
             </div>
           ))
         ):(
-          tvShowDisplay.map((item, index) => (
-            <div key={item.id} className='w-72 h-[160px] lg:h-[80%]'>
+          tvShowDisplay.map((item) => (
+            <div key={item.id} className='w-72 h-[160px] group lg:h-[80%] relative'>
               <Link to={`/detail/${item.id}`}>
                 <div
-                  className={`w-72 h-[160px] md:h-[80%] shrink-0 md:hover:scale-125 md:transition md:ease-in-out md:delay-150 md:cursor-pointer rounded-md ${index === 0 ? 'md:transform md:origin-left md:transition-transform md:duration-300 md:hover:scale-x-125 md:hover:scale-y-125' : ''}`}
+                  className={`md:w-[270px] w-72 h-[160px] md:h-[80%]  shrink-0 group-hover:opacity-90 sm:group-hover:opacity-0 transition cursor-pointer rounded-md `}
                   style={{ backgroundImage: `url(${item.img})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
                 />
+                <div className='opacity-0 absolute top-[-75px]  capitalize font-bold transition duration-400 z-20  overflow-visible w-full hidden sm:block  scale-0 group-hover:scale-125  group-hover:translate-x-[2vw] group-hover:translate-y-[6vw] group-hover:opacity-100 '>
+                <img className=' object-cover transition duration shadow-xl rounded-t-md w-full h-[12vw]' src={`${item.img}`} alt="" />
+                <div className='w-full'>
+                  <h1>{item.name}</h1>
+                 
+
+                </div>
+                </div>
               </Link>
             </div>
           ))

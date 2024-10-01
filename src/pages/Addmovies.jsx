@@ -4,15 +4,16 @@ import { fireDb } from '../firebase/Firebase';
 
 function Addmovies() {
     const [data, setData] = useState({
-        name: "",
-        img: "",
+        name:"",
+        img:"",
         coverImg: "",
         video: "",
-        category: "",
-        year: "",
+        category:"",
+        year:"",
         time: "",
         imdb: "",
-        detail:'',
+        detail:"",
+       
     });
 
     const addmovies = async(e) => {
@@ -70,7 +71,7 @@ function Addmovies() {
                     <option value="drama">Drama</option>
                     <option value="mystery thrill">Mystery Thriller</option>
                     <option value="romance">Romance</option>
-                    <option value="top movies">Top Movies</option>
+                    <option value="top movies">comedy</option>
                 </select>
             </div>
             <div>

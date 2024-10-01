@@ -22,4 +22,7 @@
   height: auto;
   grid-template-rows: auto;
 }
+.category{
+  background: linear-gradient(60deg,black ,green,blue)
+}
 
