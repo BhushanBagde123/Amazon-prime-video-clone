@@ -15,7 +15,6 @@ import Addmovies from './pages/Addmovies';
 import Tvcategory from './pages/Tvcategory';
 import Layout from './layout/Layout';
 import Wishlist from './pages/Wishlist';
-import Addtvshows from './pages/Addtvshow';
 import Search from './pages/Search';
 
 // Create the router object
@@ -59,10 +58,7 @@ const router = createBrowserRouter([
     path: '/addmovie',
     element: <Addmovies />,
   },
-  {
-    path: '/addtvshows',
-    element: <Addtvshows />,
-  },
+ 
   {
     path: '/tvshowscategory/:tvcategory',
     element: <Tvcategory />,
