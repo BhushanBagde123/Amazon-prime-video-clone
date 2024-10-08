@@ -5,8 +5,10 @@ import Mycontext from '../context/Mycontext';
 function Moviecategory() {
   const { category } = useParams(); // Get the category from the URL parameter
   const context = useContext(Mycontext);
-  const { myst, horror, romance,drama } = context; // Get all categories from the context
+  const { myst, horror, romance,drama,topImdb } = context; // Get all categories from the context
   let categoryNames =category.trim().toLowerCase();
+  
+  
 
   let moviesToDisplay = [];
   if ( categoryNames === "mystery&thriller movies" || categoryNames=== "mystery thrill") {
@@ -18,11 +20,22 @@ function Moviecategory() {
   }
   else if ( categoryNames ==="drama movies" ||categoryNames=== "drama"){
     moviesToDisplay=[...drama]
+   
   }
   else if (categoryNames ==="top movies"){
-    moviesToDisplay = [...horror];
+    moviesToDisplay=[...horror];
+    
+   
+   
   }
- console.log( moviesToDisplay)
+  else if (categoryNames ==="top Imdb movies"){
+    moviesToDisplay=[...topImdb];
+   
+    
+    
+  }
+  
+ 
  
   return (
  

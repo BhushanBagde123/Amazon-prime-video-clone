@@ -13,6 +13,7 @@ function Layout() {
         {/* contain childern */}
        <Outlet/>
         </div>
+       
         <Footer/>
     </>
   )

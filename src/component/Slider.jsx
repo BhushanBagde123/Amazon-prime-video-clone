@@ -39,7 +39,7 @@ const Slider = ({ moviesDisplay,topTenMovies}) => {
                     <div key={item.id} className='w-72 h-[80%] group relative'>
                         <Link to={`/detail/${item.id}`}>
                             <div
-                                className={`md:w-[270px] w-72 h-[160px] md:h-[80%]  shrink-0 group-hover:opacity-90 sm:group-hover:opacity-0 transition cursor-pointer rounded-md`}
+                                className={`md:w-[270px] w-[210px] h-[110px] md:h-[80%]  shrink-0 group-hover:opacity-90 sm:group-hover:opacity-0 transition cursor-pointer rounded-md`}
                                 style={{ backgroundImage: `url(${item.img})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
                             />
                             <div className='opacity-0 absolute top-[-75px]  capitalize font-bold transition duration-400 z-20  overflow-visible w-full hidden sm:block  scale-0 group-hover:scale-125  group-hover:translate-x-[2vw] group-hover:translate-y-[6vw] group-hover:opacity-100 '>
@@ -62,7 +62,7 @@ const Slider = ({ moviesDisplay,topTenMovies}) => {
     </div>
     </Link>
     <div
-      className={`md:w-[270px] w-72 h-[160px] md:h-[80%]  shrink-0 cursor-pointer rounded-md`}
+      className={`md:w-[270px]  w-[210px] h-[110px] md:h-[80%]  shrink-0 cursor-pointer rounded-md`}
       style={{ backgroundImage: `url(${item.img})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     />
       

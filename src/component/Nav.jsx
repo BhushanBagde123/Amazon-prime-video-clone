@@ -1,34 +1,53 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { TbGridDots } from "react-icons/tb";
 import { BsPersonCircle } from "react-icons/bs";
-import { NavLink,Link, } from 'react-router-dom';
+import { NavLink,Link, useNavigate, } from 'react-router-dom';
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { MdKeyboardArrowUp } from "react-icons/md";
 import  './nav.css'
 import DropDownMenu from './DropDownMenu';
 import DropDownProfile from './DropDownProfile';
+import Mycontext from '../context/Mycontext'
+import { FaBookmark } from "react-icons/fa";
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase/Firebase';
+
 function Nav() {
 const [hide,setHide]=useState(false);
+const navigator =useNavigate()
  
 const menuFunction=()=>{
   setHide(!hide);
  
 }
 const [account,setAccount]=useState(false);
+const {setUser,user} =useContext(Mycontext)
+
+
+const logout = async () => {
+  try {
+    await signOut(auth); // Sign out from Firebase
+    localStorage.removeItem("user");
+    setUser(null) // Optionally, clear local storage
+    navigator('/'); // Redirect to the homepage or login page
+  } catch (error) {
+    console.error("Error signing out: ", error);
+  }
+};
 
 
   
 
   return (
     <>
-    <nav className={`w-full lg:h-16 h-11 text-white sticky top-0 z-40 bg-black flex justify-between items-center p-2 px-5 align-middle capitalize font-semibold`}>
+    <nav className={`w-full md:h-14 h-11 text-white sticky top-0 z-40 bg-black flex justify-between items-center p-2 px-5 align-middle capitalize font-semibold`}>
         <div className='flex gap-2 w-[60%] justify-between'>
           <div className='md:hidden flex items-center justify-center w-20 relative'>
              <div className='flex items-center gap-2 justify-center'onClick={menuFunction}> <span className='text-[4.5vw] ' >menu</span>{hide==false?<MdKeyboardArrowDown size={18} />:<MdKeyboardArrowUp size={18} />}</div>
               {hide&& <DropDownMenu/>}
           </div>
-            <div className='flex items-center justify-center'><Link to={'/'}><img src="https://m.media-amazon.com/images/G/01/digital/video/web/logo-min-remaster.png" alt="" className='lg:w-24 w-24' /></Link></div>
+            <div className='flex items-center justify-center'><Link to={'/'}><img src="https://m.media-amazon.com/images/G/01/digital/video/web/logo-min-remaster.png" alt="" className='md:w-24 w-24' /></Link></div>
             <div className='md:flex  px-6 hidden'>
                 <ul className='  md:flex gap-4 justify-center items-center  '>
                <NavLink to={'/'}><li className='hover p-3 rounded-md'>home</li></NavLink> 
@@ -44,21 +63,24 @@ const [account,setAccount]=useState(false);
             </div>
             
           
-            <div className='lg:w-28 hidden h-16 lg:flex items-center '>
+            <div className='md:w-28 hidden h-16 md:flex items-center '>
              <span className='w-full hover rounded-md p-3'> subcriptions</span></div>
         </div>
         <div className='flex w-1/4 justify-end md:gap-6  items-center relative'>
-       <span className='hover p-3 rounded-full cursor-pointer'><HiMagnifyingGlass className='w-5 h-5 lg:w-7 lg:h-7' /></span> 
-    <NavLink to={'/category'}><span className='hover hidden lg:block p-3 rounded-full'><TbGridDots  className='w-5 h-5 lg:w-7 lg:h-7 ' /></span></NavLink>
+    <Link to={'/search'}>   <span className='hover p-3 rounded-full cursor-pointer'><HiMagnifyingGlass className='w-5 h-5 md:w-7 md:h-7' /></span> </Link>
+      {user&&<NavLink to={'/mystuff'}><span className='hover p-3 hidden md:block rounded-full '><FaBookmark  className='w-5 h-5 md:w-7 md:h-7' /></span></NavLink> } 
+    <NavLink to={'/category'}><span className='hover hidden md:block p-3 rounded-full'><TbGridDots  className='w-5 h-5 md:w-7 md:h-7 ' /></span></NavLink>
         <span className='hover p-3 rounded-full  cursor-pointer' onMouseEnter={()=>setAccount(true)} onMouseLeave={()=>setAccount(false)}><BsPersonCircle  className='w-5 h-5 lg:w-7 lg:h-7'/> 
         {account&& (<div className=' bg-transparent hidden md:block text-white  right-0 top-[45px] absolute'>
           <div className='absolute w-full h-10 top-0 bg-transparent rounded-md'></div>
-          <DropDownProfile/>
+          <DropDownProfile user={user} logout={logout}/>
           </div>)}
           
          </span>
        
         </div>
+      
+       
 
     </nav>
     </>

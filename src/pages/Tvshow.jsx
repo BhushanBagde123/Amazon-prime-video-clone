@@ -14,10 +14,10 @@ function Tvshow() {
      <HeroSlider/>
      {/* passing props */}
      <Title show={show}/>
-     <Category mystTv={myst} tvOne={"mystery&thriller"}/>
-     <Category horrorTv={horror} tvTwo={"horror"}/>
-     <Category romanceTv={romance} tvThree={"romance"}/>
-     <Category dramaTv={drama} tvFour={"drama"}/>
+     <Category mystTv={myst} tvOne={"mystery&thriller tv"}/>
+     <Category horrorTv={horror} tvTwo={"horror tv"}/>
+     <Category romanceTv={romance} tvThree={"romance tv"}/>
+     <Category dramaTv={drama} tvFour={"drama tv"}/>
      <Topcontainer show={show} />
      </>
   )

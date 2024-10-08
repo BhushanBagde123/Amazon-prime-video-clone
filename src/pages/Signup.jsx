@@ -3,12 +3,14 @@ import {createUserWithEmailAndPassword} from 'firebase/auth'
 import { auth, fireDb } from '../firebase/Firebase';
 import { setDoc,doc, collection } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
+import Loader from '../component/Loader'
 
 function signup(){
   const [name,setName]=useState('');
   const [email,setEmail]=useState('');
   const [password,setPassword]=useState('');
   const navigate =useNavigate();
+  const [loading,setLoading]=useState(false);
   
 
   
@@ -17,6 +19,7 @@ function signup(){
     if(name==""||email==""||password==""){
       return alert("enetr all the field")
     }
+    setLoading(true)
     try {
       await createUserWithEmailAndPassword(auth,email,password);
       const user =auth.currentUser;
@@ -37,15 +40,18 @@ function signup(){
       setPassword('')
       // console.log(user);
       console.log("user registered successfully");
+      setLoading(false);
       navigate('/login');
+      
     } catch (error) {
       console.log(error.message)
+      setLoading(false);
     }
 
   }
   return (
-    <div className='flex justify-center items-center align-middle w-full h-[100vh] bg-slate-600'>
-      
+    <div className='flex justify-center items-center relative align-middle w-full h-[100vh] bg-slate-600'>
+      <div className='absolute top-[50%]'>{loading&&<Loader/>}</div>
       <form className='w-80 h-80 md:h-[500px] md:w-[500px] text-black bg-pink-400 flex flex-col items-center gap-5 md:pt-10'>
         <div className='capitalize'><h1>Sign Up</h1></div>
         <div>

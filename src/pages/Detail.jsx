@@ -1,6 +1,6 @@
 import React, { useState,useEffect,useContext } from 'react'
 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom';
 import { getDoc,doc } from 'firebase/firestore';
 import { fireDb } from '../firebase/Firebase';
@@ -11,10 +11,11 @@ import { MdOutlineVideoLibrary } from "react-icons/md";
 
 function Detail() {
   const [product,setProduct]=useState('');
- const [moviesDisplay,setMoviesDisplay]=useState([])
+ const [moviesDisplay,setMoviesDisplay]=useState([]);
+ const navigate =useNavigate()
     const {id}=useParams();// useParams conatin url name of item id
     const context = useContext(Mycontext);
-    const { myst, horror, romance,drama } = context; 
+    const { myst, horror, romance,drama,user } = context; 
    
     const getProductData =async()=>{
    
@@ -82,7 +83,7 @@ function Detail() {
       
     </div>
     <div className='mt-9 flex gap-6 items-center'>
-    <Link to={`/video/${id}`}><button className='w-14 h-14 font-bold rounded-md capitalize flex items-center justify-center bg-slate-500'><MdOutlineVideoLibrary size={38} /></button></Link>
+   {user?<Link to={`/video/${id}`}><button className='w-14 h-14 font-bold rounded-md capitalize flex items-center justify-center bg-slate-500'><MdOutlineVideoLibrary size={38} /></button></Link>:<button onClick={()=>navigate('/login')} className='w-14 h-14 font-bold rounded-md capitalize flex items-center justify-center bg-slate-500'><MdOutlineVideoLibrary size={38} /></button>} 
     <span className='w-14 h-14 bg-slate-500 font-bold  flex justify-center items-center rounded-full cursor-pointer'><IoAdd size={38}/></span>
     </div>
     </div>

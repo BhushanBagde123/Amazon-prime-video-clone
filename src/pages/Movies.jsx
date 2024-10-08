@@ -8,7 +8,7 @@ import { useContext } from 'react'
 function Movies() {
   const movie ='movies'
  const context = useContext(Mycontext)
- const {myst,horror,romance,drama} =context  //destucture elements form context
+ const {myst,horror,romance,drama,topImdb} =context  //destucture elements form context
  
 
 
@@ -23,6 +23,7 @@ function Movies() {
   <Category drama={drama} categoryFour={"drama movies"}/>
   <Topcontainer movies={movie} />
   <Category topMovies ={horror} categoryFive={"top movies"}/>
+  <Category topImdb ={topImdb} categorySix={"top Imdb movies"}/>
   </>
 
   )

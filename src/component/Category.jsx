@@ -5,8 +5,8 @@ import { FaArrowLeft,FaArrowRight } from "react-icons/fa";
 // get the props from parent
 function Category({ horror=[],romance=[],mystTv=[],horrorTv=[],
   romanceTv=[],dramaTv=[],tvOne,tvTwo,tvThree,tvFour, topMovies=[],
-  categoryFive, show, movies,drama=[],categoryFour, myst=[],
-  categoryOne,categoryTwo,categoryThree }) {
+  categoryFive, show, movies,drama=[],categoryFour, myst=[],topImdb=[],
+  categoryOne,categoryTwo,categoryThree,categorySix }) {
 
 
   const scrollDiv = useRef(); //to get the div width
@@ -21,21 +21,21 @@ function Category({ horror=[],romance=[],mystTv=[],horrorTv=[],
   };
 
   // for dynamic name of the category
-  const displayMoviesCategory =categoryOne ||categoryTwo ||categoryThree||categoryFour|| categoryFive
+  const displayMoviesCategory =categoryOne ||categoryTwo ||categoryThree||categoryFour|| categoryFive|| categorySix
   const displayTvCategory =tvOne|| tvTwo || tvThree || tvFour
   
   // for dynamic info if the item
-  const moviesDisplay = [...myst , ...horror ,...romance,...drama,...topMovies] // movies
+  const moviesDisplay = [...myst , ...horror ,...romance,...drama,...topMovies,...topImdb] // movies
   const tvShowDisplay =[...mystTv, ...horrorTv,...romanceTv,...dramaTv] // tv shows
 
   return (
-    <div className='w-full lg:h-64 h-56 lg:mt-7 relative '>
+    <div className='w-full lg:h-64 h-44 lg:mt-7 relative '>
       <div className='w-full flex gap-5 text-white font-bold lg:text-xl capitalize px-6'>
         <span>{displayMoviesCategory || displayTvCategory} {typeof movies === 'string' ? movies : ''} {typeof show === 'string' ? show : ''}</span>
         {/* condition renduring  and dynamic route*/}
         {displayMoviesCategory? <Link to={{pathname:`/moviecategory/${displayMoviesCategory.toLowerCase()}`}}> 
           <span>see more</span>
-        </Link>:<Link to={{pathname:`/tvshowscategory/`}}>
+        </Link>:<Link to={{pathname:`/tvshowscategory/${displayTvCategory.toLowerCase()}`}}>
           <span>see more</span>
         </Link>}
        
@@ -61,7 +61,7 @@ function Category({ horror=[],romance=[],mystTv=[],horrorTv=[],
             <div key={item.id} className='w-72 h-[160px] group  lg:h-[80%] relative '>
               <Link to={`/detail/${item.id}`}>
                 <div
-                  className={`md:w-[270px] w-72 h-[160px] md:h-[80%] shrink-0 group-hover:opacity-90 sm:group-hover:opacity-0 transition cursor-pointer rounded-md `}
+                  className={`md:w-[270px] w-[210px] h-[110px] md:h-[80%] shrink-0 group-hover:opacity-90 sm:group-hover:opacity-0 transition cursor-pointer rounded-md `}
                   style={{ backgroundImage: `url(${item.img})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
                 />
                 <div className='opacity-0 absolute top-[-75px]  capitalize font-bold transition duration-400 z-20  overflow-visible w-full hidden sm:block  scale-0 group-hover:scale-125  group-hover:translate-x-[2vw] group-hover:translate-y-[6vw] group-hover:opacity-100 '>
@@ -81,7 +81,7 @@ function Category({ horror=[],romance=[],mystTv=[],horrorTv=[],
             <div key={item.id} className='w-72 h-[160px] group lg:h-[80%] relative'>
               <Link to={`/detail/${item.id}`}>
                 <div
-                  className={`md:w-[270px] w-72 h-[160px] md:h-[80%]  shrink-0 group-hover:opacity-90 sm:group-hover:opacity-0 transition cursor-pointer rounded-md `}
+                  className={`md:w-[270px] w-[210px] h-[110px] md:h-[80%]  shrink-0 group-hover:opacity-90 sm:group-hover:opacity-0 transition cursor-pointer rounded-md `}
                   style={{ backgroundImage: `url(${item.img})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
                 />
                 <div className='opacity-0 absolute top-[-75px]  capitalize font-bold transition duration-400 z-20  overflow-visible w-full hidden sm:block  scale-0 group-hover:scale-125  group-hover:translate-x-[2vw] group-hover:translate-y-[6vw] group-hover:opacity-100 '>

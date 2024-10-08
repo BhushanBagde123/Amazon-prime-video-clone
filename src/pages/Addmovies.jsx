@@ -1,30 +1,60 @@
-import { addDoc, collection } from 'firebase/firestore';
 import React, { useState } from 'react';
-import { fireDb } from '../firebase/Firebase';
+import { addDoc, collection } from 'firebase/firestore';
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { fireDb } from '../firebase/Firebase'; // Your Firestore instance
+import { fireStorage } from '../firebase/Firebase'; // Your Firebase Storage instance
 
 function Addmovies() {
     const [data, setData] = useState({
-        name:"",
-        img:"",
+        name: "",
+        img: "",
         coverImg: "",
         video: "",
-        category:"",
-        year:"",
+        category: "",
+        year: "",
         time: "",
         imdb: "",
-        detail:"",
-       
+        detail: "",
     });
+    const [videoFile, setVideoFile] = useState(null); // State to store the video file
 
-    const addmovies = async(e) => {
+    const addmovies = async (e) => {
         e.preventDefault();
         try {
-            const movies = collection(fireDb,'movies');
-            await addDoc(movies,data)
+            const moviesCollection = collection(fireDb, 'movies');
+            
+            // Upload video file to Firebase Storage if videoFile is selected
+            let videoUrl = '';
+            if (videoFile) {
+                const storageRef = ref(fireStorage, `movies/videos/${videoFile.name}`);
+                const uploadTask = uploadBytesResumable(storageRef, videoFile);
+
+                await new Promise((resolve, reject) => {
+                    uploadTask.on('state_changed', 
+                        (snapshot) => {
+                            // You can track upload progress here if needed
+                        }, 
+                        (error) => reject(error), 
+                        () => {
+                            // Get the download URL after the upload is complete
+                            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                                videoUrl = downloadURL;
+                                resolve();
+                            });
+                        }
+                    );
+                });
+            }
+
+            // Add video URL to the data object
+            const movieData = { ...data, video: videoUrl };
+
+            // Add the movie data to Firestore
+            await addDoc(moviesCollection, movieData);
+            console.log("Movie added successfully!");
         } catch (error) {
-            console.log(error.message)
+            console.log(error.message);
         }
-        // Add logic to handle movie submission (e.g., send to a backend)
     };
 
     return (
@@ -56,9 +86,9 @@ function Addmovies() {
             <div>
                 <label>Video</label>
                 <input
-                    type="url"
-                    value={data.video}
-                    onChange={(e) => setData({ ...data, video: e.target.value })}
+                    type="file"
+                    accept="video/*"
+                    onChange={(e) => setVideoFile(e.target.files[0])}
                 />
             </div>
             <div>
@@ -71,7 +101,7 @@ function Addmovies() {
                     <option value="drama">Drama</option>
                     <option value="mystery thrill">Mystery Thriller</option>
                     <option value="romance">Romance</option>
-                    <option value="top movies">comedy</option>
+                    <option value="comedy">Comedy</option>
                 </select>
             </div>
             <div>
@@ -100,12 +130,15 @@ function Addmovies() {
                 />
             </div>
             <div>
-                <label >detail</label>
-                <input type="text" onChange={(e)=>{
-                    setData({...data,detail:e.target.value})
-                }} />
+                <label>Detail</label>
+                <input
+                    type="text"
+                    onChange={(e) => {
+                        setData({ ...data, detail: e.target.value });
+                    }}
+                />
             </div>
-            <button type="submit">submit</button>
+            <button type="submit">Submit</button>
         </form>
     );
 }

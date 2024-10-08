@@ -1,5 +1,5 @@
 
-import React, { useState, useCallback, useRef, useEffect, useContext } from 'react';
+import React, { useState, useCallback, useRef, useContext } from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -15,7 +15,9 @@ const HeroSlider = () => {
   const slider =useRef();
   const videoref =useRef();
   const context =useContext(Mycontext);
-  const {horror}=context
+  const {getAllProducts}=context
+  const trending =getAllProducts.filter((p)=>p.year ==2024);
+
 
   const controller = () => {
     setVoice(!voice);
@@ -34,6 +36,8 @@ const HeroSlider = () => {
       slider.current.slickNext(); // Move to next slide
     }
   }
+ 
+   
   
   
 
@@ -53,9 +57,9 @@ const HeroSlider = () => {
   return (
     <div className="relative w-full lg:h-[600px] h-[300px] overflow-hidden cursor-pointer">
       <Slider {...settings} ref={slider}>
-        {horror.slice(0,6).map((item) => (
+        {trending.slice(0,6).map((item) => (
           
-      <Link to={`/detail/${item.id}`}><div 
+      <div 
             key={item.id} 
             className="relative" 
             onMouseEnter={() => handleMouseEnter(item.id)}
@@ -63,17 +67,19 @@ const HeroSlider = () => {
            
           >
            
-            <div
-              className="lg:h-[550px] h-[200px] bg-cover bg-center"
+           <div
+              className="lg:h-[560px] h-[200px] bg-cover bg-center"
               style={{ backgroundImage: `url(${item.coverImg})` }}>
               {hover === item.id && (
                 <video ref={videoref}
                 className="absolute hidden lg:block inset-0 object-cover w-full h-full linergreed"
                   autoPlay
                   muted={voice}
+                 
                   onEnded={handleVedioEnd} >
                     <source src={item.video}/>
                   </video>
+                
                 
               )}
               <img className='w-full h-full lg:hidden' src={`${item.coverImg}`} alt="" />
@@ -87,11 +93,13 @@ const HeroSlider = () => {
                 </button>
               )}
               <div className="absolute bottom-0 p-8">
-                <h2 className="text-white lg:text-5xl capitalize text-xl font-bold">{item.name}</h2>
+              <Link to={`/detail/${item.id}`}>  <h2 className="text-white lg:text-5xl capitalize text-xl font-bold">{item.name}</h2> </Link>
               </div>
             </div>
+           
+
           </div>
-          </Link> 
+           
         ))}
         
       </Slider>

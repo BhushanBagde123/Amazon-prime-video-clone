@@ -1,15 +1,17 @@
-import React ,{ useState} from 'react'
+import React ,{ useState,useContext} from 'react'
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { collection, onSnapshot, query, where } from 'firebase/firestore';
 import { auth, fireDb } from '../firebase/Firebase';
+import Mycontext from '../context/Mycontext'
 function Login() {
     const [password,setPassword]=useState('');
     const [email,setEmail] =useState('');
     const [eye,setEye]=useState(false);
-    const navigate =useNavigate()
+    const navigate =useNavigate();
+    const { setUser } = useContext(Mycontext)
     
      const toggelEye=()=>{
         setEye(!eye);
@@ -25,9 +27,10 @@ function Login() {
           const users = await signInWithEmailAndPassword(auth, email, password);
           alert("Login successfully");
           console.log("Login");
-      
+          setUser(users?.user)
+          localStorage.setItem("user", JSON.stringify(users?.user))
           // Navigate after login
-          navigate("/movies");
+          navigate("/");
       
           // Fetch user data from Firestore
           const q = query(
@@ -39,6 +42,7 @@ function Login() {
             let user;
             QuerySnapshot.forEach((doc) => user = doc.data());
             localStorage.setItem("user", JSON.stringify(user));
+            setUser(user)
           });
       
           // Cleanup the listener when the component unmounts
