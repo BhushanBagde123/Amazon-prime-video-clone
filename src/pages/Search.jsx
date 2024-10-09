@@ -10,7 +10,7 @@ const Search = () => {
         const name =e.target.value;
         const value= getAllProducts.filter((p)=>p.name.toLowerCase().includes(name.toLowerCase()));
         setFilter(value);
-        console.log(filter);
+        
 
     }
   return (

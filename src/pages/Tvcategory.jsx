@@ -1,6 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Mycontext from '../context/Mycontext';
+import { BsThreeDotsVertical } from "react-icons/bs";
+import PopDetail from '../component/PopDetail';
 
 
 function Tvcategory() {
@@ -8,7 +10,13 @@ function Tvcategory() {
   const context = useContext(Mycontext);
   const { myst, horror, romance,drama } = context; // Get all categories from the context
   let categoryNames =tvcategory.trim().toLowerCase();
-  
+  const [popUp,setPopUp]=useState(null);
+  const openPopUp =(id)=>{
+ setPopUp(id);
+  }
+  const closePopUp =()=>{
+    setPopUp(null);
+  }
   
 
   let moviesToDisplay = [];
@@ -35,7 +43,7 @@ function Tvcategory() {
         </h1>
 
         {/* Display filtered movies */}
-        <div className='w-full grid md:grid-cols-4 gap-4 md:gap-3 p-3 pt-4  overflow-hidden md:mt-9 movies-grid'>
+        <div className='w-full grid md:grid-cols-4 gap-4 md:gap-3  pt-4  overflow-hidden md:mt-9 movies-grid'>
           {moviesToDisplay.length > 0 ? (
             moviesToDisplay.map((item, index) => (
               <div key={item.id} className='lg:w-72 w-full flex h-full md:px-3 group relative '>
@@ -54,22 +62,27 @@ function Tvcategory() {
                 </div>
                 </div>
                   </div>
-                  <div className='md:hidden w-full h-[100px] capitalize cursor-pointer flex gap-2 '>
+                  <div className='md:hidden w-full h-[100px] p-3 capitalize cursor-pointer flex gap-2 '>
                     <img className='w-44 h-[100px] shrink-0 rounded-lg' src={`${item.img}`} alt="" />
                     <div>
-                    <h1 className='font-bold text-md'>{item.name}</h1>
+                    <h1 className='font-bold text-md w-36'>{item.name}</h1>
                     <span className='flex list-none gap-2 text-gray-500 font-semibold '>
                     <li>{item.year}</li>
                     <li>{item.time}</li>
                    
                     </span>
                     </div>
+                    
 
                   </div>
-                  
-                  
-                 
+                
                 </Link>
+                <div className='flex md:hidden justify-center items-center' onClick={()=>openPopUp(item.id)}>
+                    <BsThreeDotsVertical size={23} />
+                    </div>
+                  
+                   {popUp==item.id ? <PopDetail id={item.id} name={item.name} closePopUp={closePopUp} />:""} 
+                
               </div>
             ))
           ) : (

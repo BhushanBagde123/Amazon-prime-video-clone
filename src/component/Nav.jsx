@@ -24,6 +24,9 @@ const menuFunction=()=>{
 const [account,setAccount]=useState(false);
 const {setUser,user} =useContext(Mycontext)
 
+const dropDownAccount =()=>{
+  setAccount(!account);
+}
 
 const logout = async () => {
   try {
@@ -67,15 +70,19 @@ const logout = async () => {
              <span className='w-full hover rounded-md p-3'> subcriptions</span></div>
         </div>
         <div className='flex w-1/4 justify-end md:gap-6  items-center relative'>
-    <Link to={'/search'}>   <span className='hover p-3 rounded-full cursor-pointer'><HiMagnifyingGlass className='w-5 h-5 md:w-7 md:h-7' /></span> </Link>
+    <Link to={'/search'}>   <span className='hover p-3 rounded-full'><HiMagnifyingGlass className='w-5 h-5 md:w-7 md:h-7' /></span> </Link>
       {user&&<NavLink to={'/mystuff'}><span className='hover p-3 hidden md:block rounded-full '><FaBookmark  className='w-5 h-5 md:w-7 md:h-7' /></span></NavLink> } 
     <NavLink to={'/category'}><span className='hover hidden md:block p-3 rounded-full'><TbGridDots  className='w-5 h-5 md:w-7 md:h-7 ' /></span></NavLink>
-        <span className='hover p-3 rounded-full  cursor-pointer' onMouseEnter={()=>setAccount(true)} onMouseLeave={()=>setAccount(false)}><BsPersonCircle  className='w-5 h-5 lg:w-7 lg:h-7'/> 
+        <span className='hover p-3 rounded-full  cursor-pointer' onMouseEnter={()=>setAccount(true)} onMouseLeave={()=>setAccount(false)}><BsPersonCircle onClick={dropDownAccount}  className='w-5 h-5 lg:w-7 lg:h-7'/> 
         {account&& (<div className=' bg-transparent hidden md:block text-white  right-0 top-[45px] absolute'>
           <div className='absolute w-full h-10 top-0 bg-transparent rounded-md'></div>
           <DropDownProfile user={user} logout={logout}/>
           </div>)}
           
+          {account&& (<div className=' bg-transparent  md:hidden text-white  right-0 top-[45px] absolute'>
+          <div className='absolute w-full h-10 top-0 bg-transparent rounded-md'></div>
+          <DropDownProfile user={user} logout={logout}/>
+          </div>)}
          </span>
        
         </div>
