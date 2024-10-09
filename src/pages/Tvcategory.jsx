@@ -27,7 +27,7 @@ function Tvcategory() {
   } else if ( categoryNames === "romance tv" ||categoryNames=== "romance") {
     moviesToDisplay = [...romance];
   }
-  else if ( categoryNames ==="drama movies tv" ||categoryNames=== "drama"){
+  else if ( categoryNames ==="drama tv" ||categoryNames=== "drama"){
     moviesToDisplay=[...drama]
    
   }

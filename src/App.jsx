@@ -16,6 +16,7 @@ import Tvcategory from './pages/Tvcategory';
 import Layout from './layout/Layout';
 import Wishlist from './pages/Wishlist';
 import Search from './pages/Search';
+import Genres from './pages/Genres';
 
 // Create the router object
 const router = createBrowserRouter([
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
   {
     path:'/mystuff',
     element:<Wishlist/>,
+  },
+  {
+    path:'/geners/:categoryname',
+    element:<Genres/>,
   }
 ]
 },
