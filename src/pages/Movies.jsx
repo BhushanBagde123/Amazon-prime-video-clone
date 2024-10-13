@@ -10,7 +10,7 @@ function Movies() {
  const context = useContext(Mycontext)
  const {myst,horror,romance,drama,topImdb} =context  //destucture elements form context
  
-
+  document.title="prime video | Movies"
 
   return (
     <>

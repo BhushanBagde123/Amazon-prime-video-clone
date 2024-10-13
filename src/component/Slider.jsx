@@ -39,11 +39,11 @@ const Slider = ({ moviesDisplay,topTenMovies}) => {
                     <div key={item.id} className='w-72 h-[80%] group relative'>
                         <Link to={`/detail/${item.id}`}>
                             <div
-                                className={`md:w-[270px] w-[210px] h-[110px] md:h-[80%]  shrink-0 group-hover:opacity-90 sm:group-hover:opacity-0 transition cursor-pointer rounded-md`}
+                                className={`md:w-[270px] w-[210px] h-[110px] md:h-[80%]  shrink-0 group-hover:opacity-90 lg:group-hover:opacity-0 transition cursor-pointer rounded-md`}
                                 style={{ backgroundImage: `url(${item.img})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
                             />
-                            <div className='opacity-0 absolute top-[-75px]  capitalize font-bold transition duration-400 z-20  overflow-visible w-full hidden sm:block  scale-0 group-hover:scale-125  group-hover:translate-x-[2vw] group-hover:translate-y-[6vw] group-hover:opacity-100 '>
-                <img className=' object-cover transition duration shadow-xl rounded-t-md w-full h-[12vw]' src={`${item.img}`} alt="" />
+                            <div className='opacity-0 absolute top-[-75px]  capitalize font-bold transition duration-400 z-20  overflow-visible w-full hidden lg:block  scale-0 group-hover:scale-125  group-hover:translate-x-[2vw] group-hover:translate-y-[6vw] group-hover:opacity-100 '>
+                <img className=' object-cover transition duration shadow-xl rounded-t-md w-full h-[12vw]' src={`${item.img}`} alt="images"  aria-label='recommend images' />
                 <div className='w-full'>
                   <h1>{item.name}</h1>
                  

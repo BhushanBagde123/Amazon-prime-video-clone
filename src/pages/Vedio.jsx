@@ -61,8 +61,11 @@ function Vedio() {
       return `${minutes}:${seconds<10?"0":""}${seconds}`;
     }
     
-   
-
+   useEffect(()=>{
+    if(product)
+    document.title =`prime video | ${product.name}`
+   },[product])
+    
     
     useEffect(()=>{
         getProductData()

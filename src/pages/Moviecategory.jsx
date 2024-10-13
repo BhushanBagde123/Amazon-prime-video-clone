@@ -48,7 +48,7 @@ function Moviecategory() {
     
     
   }
-  
+  document.title = `prime video | ${categoryNames}`
  
  
   return (
@@ -59,14 +59,14 @@ function Moviecategory() {
         </h1>
 
         {/* Display filtered movies */}
-        <div className='w-full grid md:grid-cols-4 gap-4 md:gap-3 md:p-3 pt-4  overflow-hidden md:mt-9 movies-grid'>
+        <div className='w-full grid lg:grid-cols-4 md:grid-cols-3 gap-4 md:gap-3 md:p-3 pt-4  overflow-hidden md:mt-9 movies-grid'>
           {moviesToDisplay.length > 0 ? (
             moviesToDisplay.map((item, index) => (
-              <div key={item.id} className='lg:w-72 w-full flex h-full md:px-3 group md:relative '>
+              <div key={item.id} className='lg:w-72 w-full md:w-60  flex justify-between  h-full   group md:relative '>
                 <Link to={`/detail/${item.id}`}>
                 
                   <div
-                    className={`md:w-[270px] w-72 h-[160px] md:h-[160px]  hidden md:block shrink-0 group-hover:opacity-90 sm:group-hover:opacity-0 transition  rounded-md `}
+                    className={`md:w-[216px] xl:w-72 xl:h-40 w-72 h-[160px] md:h-[121px]  hidden md:block shrink-0 group-hover:opacity-90 sm:group-hover:opacity-0 transition  rounded-md `}
                     style={{ backgroundImage: `url(${item.img})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
                   >
                 <div className='opacity-0 absolute top-[-75px]  capitalize font-bold transition duration-400 z-20  w-full hidden sm:block  scale-0 group-hover:scale-125  group-hover:translate-x-[2vw] group-hover:translate-y-[6vw] group-hover:opacity-100 '>
@@ -78,7 +78,7 @@ function Moviecategory() {
                 </div>
                 </div>
                   </div>
-                  <div className='md:hidden w-full p-3 h-[100px] capitalize cursor-pointer flex  gap-2 '>
+                  <div className='md:hidden w-full  p-3 h-[100px] capitalize cursor-pointer flex  gap-2 '>
                     <img className='w-44 h-[100px] shrink-0 rounded-lg' src={`${item.img}`} alt="" />
                     <div>
                     <h1 className='font-bold text-md w-36'>{item.name}</h1>

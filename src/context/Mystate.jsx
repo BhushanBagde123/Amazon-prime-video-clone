@@ -10,6 +10,7 @@ function Mystate({children}) {
     const [romance ,setRomance]=useState([]);
     const [drama,setDrama]=useState([]);
     const [topImdb,setTopImdb]=useState([]);
+    const [like,setLike]=useState([]);
    
 
     const getProducts =async()=>{
@@ -57,7 +58,8 @@ function Mystate({children}) {
 
   return (
     <Mycontext.Provider value={{
-        user,setUser,myst,horror,romance,drama,topImdb,getAllProducts
+        user,setUser,myst,horror,romance
+        ,drama,topImdb,getAllProducts,like,setLike
     }}>
         {children}
 

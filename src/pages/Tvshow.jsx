@@ -8,7 +8,7 @@ function Tvshow() {
   const show ='TV shows'
   const context = useContext(Mycontext)
  const {myst,horror,romance,drama} =context // destucture elements form context
- 
+ document.title ="prime video | Tv Shows"
   return (
     <>
      <HeroSlider/>

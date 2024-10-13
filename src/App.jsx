@@ -17,6 +17,8 @@ import Layout from './layout/Layout';
 import Wishlist from './pages/Wishlist';
 import Search from './pages/Search';
 import Genres from './pages/Genres';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 // Create the router object
 const router = createBrowserRouter([
@@ -95,6 +97,20 @@ function App() {
   return (
     <Mystate>
       <RouterProvider router={router} />
+      <ToastContainer
+      position="top-center"
+      autoClose={2000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      width="200px"
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+      transition: Bounce 
+      />
     </Mystate>
   );
 }

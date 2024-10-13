@@ -7,10 +7,13 @@ const Genres = () => {
     const { categoryname } = useParams();
     const { getAllProducts } = useContext(Mycontext);
     const [activeSection, setActiveSection] = useState('all');
+    
+    document.title ="prime video | Browsers"
 
     const handleSectionClick = (section) => {
         setActiveSection(section);
     };
+   
 
     const filterItems = () => {
         return getAllProducts.filter((item) => {
@@ -50,10 +53,10 @@ const Genres = () => {
                 </span>
             </div>
 
-            <div className='w-full h-auto grid md:grid-cols-4 gap-5 grid-cols-2  movies-grid'>
+            <div className='w-full h-auto grid lg:grid-cols-4 gap-5 grid-cols-2 sm:grid-cols-3  movies-grid'>
                 {filteredItems.length > 0 ? (
                     filteredItems.map((item) => (
-                        <div key={item.id} className='md:w-72 md:h-40 w-40 h-24'>
+                        <div key={item.id} className='xl:w-72 md:w-[216px] md:h-[121px] xl:h-40  w-40 h-24'>
                             <Link to={`/detail/${item.id}`}>
                                 <img className='w-full h-full rounded-md' src={`${item.img}`} alt={item.title} />
                             </Link>   

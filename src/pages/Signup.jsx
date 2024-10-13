@@ -4,6 +4,8 @@ import { auth, fireDb } from '../firebase/Firebase';
 import { setDoc,doc, collection } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../component/Loader'
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 
 function signup(){
   const [name,setName]=useState('');
@@ -11,9 +13,14 @@ function signup(){
   const [password,setPassword]=useState('');
   const navigate =useNavigate();
   const [loading,setLoading]=useState(false);
-  
+   document.title ="Register"
 
-  
+   const [eye,setEye]=useState(false);
+    
+     const toggelEye=()=>{
+        setEye(!eye);
+
+     }
   const usersignup=async(e)=>{
     e.preventDefault();
     if(name==""||email==""||password==""){
@@ -47,51 +54,54 @@ function signup(){
       console.log(error.message)
       setLoading(false);
     }
-
+   
   }
   return (
-    <div className='flex justify-center items-center relative align-middle w-full h-[100vh] bg-slate-600'>
-      <div className='absolute top-[50%]'>{loading&&<Loader/>}</div>
-      <form className='w-80 h-80 md:h-[500px] md:w-[500px] text-black bg-pink-400 flex flex-col items-center gap-5 md:pt-10'>
-        <div className='capitalize'><h1>Sign Up</h1></div>
+    <div className='w-full h-screen bg-black flex text-black justify-center items-center'>
+        <form action="" className='w-96 h-[350px] bg-pink-300 p-2 rounded-md capitalize flex justify-center items-center flex-col gap-6'>
+          <div className='absolute top-[50%] z-20'>{loading&&<Loader/>}</div>
+            <h1 className='text-xl font-bold'>sign up</h1>
         <div>
-          <label>Name</label>
+          <label>enter name</label>
           <br />
-          <input 
-            type="text" 
-            placeholder='Name'
+          <div className='w-full bg-white px-1'>
+            <input type='text'
+            placeholder='name' 
             value={name}
-            onChange={(e) => setName( e.target.value )}
-          />
+            onChange={(e)=>setName(e.target.value)} 
+             className='p-1 focus:outline-none w-52'/></div>
         </div>
-        <div>
-          <label>Email</label>
-          <br />
-          <input 
-            type="email"  
-            placeholder='Email'
+        <div className=''>
+            <label>enter email</label>
+            <br />
+            <div className='w-full bg-white px-1'> <input type="email" 
+            placeholder='email'
             value={email}
-            onChange={(e) => setEmail( e.target.value )}
-          />
+            onChange={(e)=>{setEmail(e.target.value)}}
+            className='p-1 focus:outline-none w-52' /></div>
+           
         </div>
         <div>
-          <label>Password</label>
-          <br />
-          <input 
-            type="password" 
-            placeholder='Password'
-            value={password}
-            onChange={(e) => setPassword( e.target.value )}
-          />
+            <label>enter password</label>
+            <br />
+            <div className='flex items-center w-full bg-white px-1 '> 
+                <input type={eye?"text":"password"}
+                value={password}
+                onChange={(e)=>setPassword(e.target.value)}
+                placeholder='password'
+             className='p-1 focus:outline-none w-52' />
+             <span onClick={toggelEye}>
+           {eye?(<FaEyeSlash className='cursor-pointer'  />):(password&&<FaEye className='cursor-pointer' />)} 
+           </span>
+            </div>
+           
         </div>
-        <div>
-        <button 
-          onClick={usersignup} 
-          className='w-28 h-12 bg-black text-white rounded-md capitalize font-bold'>
-          Sign Up
+        <div className='flex flex-col items-center gap-4'>
+        <button type='submit' onClick={usersignup} className='capitalize bg-yellow-300 font-semibold w-32 h-12 rounded-md'>
+            register
         </button>
         </div>
-      </form>
+        </form>
     </div>
   )
 }

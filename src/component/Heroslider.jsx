@@ -55,7 +55,7 @@ const HeroSlider = () => {
   };
 
   return (
-    <div className="relative w-full lg:h-[600px] h-[300px] overflow-hidden cursor-pointer">
+    <div className="relative w-full lg:h-[600px] h-[300px] sm:h-[350px] md:h-[400px] overflow-hidden cursor-pointer">
       <Slider {...settings} ref={slider}>
         {trending.slice(0,6).map((item) => (
           
@@ -68,25 +68,26 @@ const HeroSlider = () => {
           >
            
            <div
-              className="lg:h-[560px] h-[200px] bg-cover bg-center"
-              style={{ backgroundImage: `url(${item.coverImg})` }}>
+              className="lg:h-[560px] h-[200px] sm:h-[300px] md:h-[350px]  bg-cover bg-center"
+              style={{ backgroundImage: `url(${item.coverImg})` }} aria-label='cover image'>
               {hover === item.id && (
                 <video ref={videoref}
                 className="absolute hidden lg:block inset-0 object-cover w-full h-full linergreed"
                   autoPlay
                   muted={voice}
-                 
+                  aria-hidden={hover !== item.id}
                   onEnded={handleVedioEnd} >
                     <source src={item.video}/>
                   </video>
                 
                 
               )}
-              <img className='w-full h-full lg:hidden' src={`${item.coverImg}`} alt="" />
+              <img className='w-full h-full lg:hidden' src={`${item.coverImg}`} alt={ `${item.name}image`} />
               <div className="absolute inset-0 bg-black linergreed"></div>
               {hover && (
                 <button 
                   onClick={controller} 
+                  aria-label={voice?"mute voice":"unmute voice"}
                   className="absolute left-[90%] hidden z-20 lg:flex justify-center items-center rounded-full top-24 w-12 h-12 bg-black opacity-40 "
                 >
                   {voice ? <PiSpeakerSimpleSlash size={24}  /> : <PiSpeakerSimpleLowLight size={24}/>}

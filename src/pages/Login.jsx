@@ -57,7 +57,7 @@ function Login() {
           alert(error.message);
         }
       };
-
+document.title ="Login"
   return (
     <div className='w-full h-screen bg-black flex justify-center items-center'>
         <form action="" className='w-96 h-[350px] bg-pink-300 rounded-md text-black capitalize flex justify-center items-center flex-col gap-6'>

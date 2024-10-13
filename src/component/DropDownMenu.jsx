@@ -7,7 +7,7 @@ function DropDownMenu() {
   const context =useContext(Mycontext)
   const {user}=context
   return (
-    <div className={` px-6 z-20 w-48  rounded-md h-96 top-[40px] right-[-100px]  bg-slate-900 absolute`}>
+    <div className={` px-6 z-20 w-48 sm:h-72 sm:overflow-auto rounded-md h-96 top-[40px] right-[-100px]  bg-slate-900 absolute`}>
     <ul className='  flex flex-col py-4  '>
    <NavLink to={'/'}><li className=' p-3 rounded-md'>home</li></NavLink> 
    <NavLink to={'/movies'}><li className=' p-3 rounded-md'>movies</li></NavLink> 
