@@ -88,7 +88,7 @@ function Detail() {
   return (
     <>
     {/* // display movies data from firebase */}
-    <div className={`w-full lg:h-[600px] md:h-[500px]   relative  `} >
+    <div className={`w-full lg:h-[680px] md:h-[500px]   relative  `} >
     <picture className='w-full h-full'>
   <source type='image/webp' srcSet={`${product.coverImg}`} />
   <img src={`${product.coverImg}`} alt='Product Cover' className=' w-full md:h-full h-[220px] sm:h-[300px] relative' />
@@ -96,11 +96,11 @@ function Detail() {
 
     <div className=' w-full h-full absolute inset-0 bg-black  linergreedBottom '>
     <div className='w-[70%] px-7  hidden md:block py-5'>
-    <span className='hidden md:block'><img className='w-14' src="https://m.media-amazon.com/images/G/01/digital/video/merch/subs/benefit-id/m-r/Prime/logos/channels-logo-color._CB554929912_SY52.5_FMpng_.png" alt="" /></span>
+    <span className='hidden md:block'><img className='w-14 ' src="https://m.media-amazon.com/images/G/01/digital/video/merch/subs/benefit-id/m-r/Prime/logos/channels-logo-color._CB554929912_SY52.5_FMpng_.png" alt="" /></span>
     <div className='mt-8  capitalize font-bold'>
       <h1 className='text-5xl font-bold'>{product.name }</h1>  
     </div>
-    <div className='mt-8 text-xl md:text-sm  lg:text-xl capitalize font-bold'>
+    <div className='mt-10 text-xl md:text-sm  lg:text-xl capitalize font-bold'>
     <p>{product. detail}</p>
     </div>
     <div className='flex mt-8   '>

@@ -7,7 +7,7 @@
   color:black
 }
 .linergreedBottom{
-  background: linear-gradient(to top , black,  50%, transparent);
+  background: linear-gradient(to top , black,  70%, transparent);
 }
 .linergreed{
   background: linear-gradient(60deg,black ,transparent)
