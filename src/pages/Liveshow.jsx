@@ -1,11 +1,15 @@
 import React from 'react'
-
+import Title from '../component/Title'
 
 
 function Liveshow() {
   document.title ="prime video | Live Tv"
+  const LiveShow ="live tv"
   return (
-   <div></div>
+  <div>
+    <Title liveshow={LiveShow}/>
+
+  </div>
   )
 }
 

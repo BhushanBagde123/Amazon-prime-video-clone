@@ -39,7 +39,8 @@ function signup(){
           email:user.email,
           password:password,
           uid: user.uid, 
-          role:'user'
+          role:'user',
+          wishlist:[]
         })
       }
       setName('');

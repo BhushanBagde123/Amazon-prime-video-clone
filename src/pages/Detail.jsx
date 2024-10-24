@@ -56,7 +56,7 @@ function Detail() {
     const addMovies = () => {
       if(user){
       // Check if the product is already in the wishlist
-      const isProductInWishlist = like.some(item => item.name === product.name);
+      const isProductInWishlist = user.wishlist.some(item => item.name === product.name);
       if (isProductInWishlist) {
         toast.error("already add in wishlist");
         return; // Exit if the product is already in the wishlist
@@ -116,8 +116,8 @@ function Detail() {
       
     </div>
     <div className='mt-9 flex gap-6 items-center'>
-   {user?<Link to={`/video/${id}`}><button className='w-14 h-14 font-bold rounded-md capitalize flex items-center justify-center bg-slate-500'><MdOutlineVideoLibrary size={38}  aria-label='video' /></button></Link>:<button onClick={()=>navigate('/login')} className='w-14 h-14 font-bold rounded-md capitalize flex items-center justify-center bg-slate-500'><MdOutlineVideoLibrary size={38}  aria-label='login' /></button>} 
-    <span className='w-14 h-14 bg-slate-500 font-bold  flex justify-center items-center rounded-full cursor-pointer'>{mark?<IoMdCheckmark size={38} onClick={addMovies} />:<IoAdd size={38} onClick={addMovies}/>}</span>
+   {user?<Link to={`/video/${id}`}><button className='w-14 h-14 font-bold rounded-md capitalize flex items-center justify-center bg-black opacity-55 hover:opacity-100'><MdOutlineVideoLibrary size={38}  aria-label='video' /></button></Link>:<button onClick={()=>navigate('/login')} className='w-14 h-14 font-bold rounded-md capitalize flex items-center justify-center bg-black opacity-55 hover:opacity-100'><MdOutlineVideoLibrary size={38}  aria-label='login' /></button>} 
+    <span className='w-14 h-14 bg-black opacity-55 font-bold hover:opacity-100 flex justify-center items-center rounded-full cursor-pointer'>{mark?<IoMdCheckmark size={38} onClick={addMovies} />:<IoAdd size={38} onClick={addMovies}/>}</span>
     </div>
     </div>
     <div className=' md:hidden w-full  absolute top-[50%]  p-4'>
