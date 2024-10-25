@@ -7,7 +7,7 @@ function Categorypage() {
     "action&adventure","anime","comedy","documentery","drama",
     "fantasy","horror","kids","mystery&thrillers","romance","science fiction"
   ]
-  document.title ="prime video | Genres"
+  document.title ="Prime Video | Genres"
  
   return (
    <div className='w-full min-h-screen p-3 '>

@@ -72,7 +72,7 @@ const logout = async () => {
         <div className='flex w-1/4 justify-end lg:gap-6  items-center relative'>
     <Link className='hover p-3 rounded-full flex items-center' to={'/search'}  aria-label='search'>   <span><HiMagnifyingGlass className='w-5 h-5 md:w-7 md:h-7' aria-label='search' /></span> </Link>
       {user&&<NavLink to={'/mystuff'}><span className='hover p-3 hidden lg:block rounded-full ' aria-label='wishlist'><FaBookmark  className='w-5 h-5 md:w-7 md:h-7'aria-label='wishlist' /></span></NavLink> } 
-    <NavLink to={'/category'}><span className='hover hidden lg:block p-3 rounded-full'  aria-label='geners'><TbGridDots  className='w-5 h-5 md:w-7 md:h-7 ' aria-label='geners' /></span></NavLink>
+    <NavLink to={'/category'}><span className='hover hidden lg:block p-3 rounded-full ' aria-label='geners'><TbGridDots  className='w-5 h-5 md:w-7 md:h-7 ' aria-label='geners' /></span></NavLink>
         <span className='hover p-3 rounded-full  cursor-pointer' onMouseEnter={()=>setAccount(true)} onMouseLeave={()=>setAccount(false)}><BsPersonCircle onClick={dropDownAccount}  className='w-5 h-5 lg:w-7 lg:h-7'/> 
         {account&& (<div className=' bg-transparent hidden md:block text-white  right-0 top-[45px] absolute'>
           <div className='absolute w-full h-10 top-0 bg-transparent rounded-md'></div>

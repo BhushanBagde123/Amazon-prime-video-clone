@@ -6,10 +6,13 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { collection, onSnapshot, query, where } from 'firebase/firestore';
 import { auth, fireDb } from '../firebase/Firebase';
 import Mycontext from '../context/Mycontext'
+import { toast } from 'react-toastify';
+import Loader from '../component/Loader';
 function Login() {
     const [password,setPassword]=useState('');
     const [email,setEmail] =useState('');
     const [eye,setEye]=useState(false);
+    // const [loading,setLoading]= useState(false)
     const navigate =useNavigate();
     const { setUser } = useContext(Mycontext)
     
@@ -17,15 +20,16 @@ function Login() {
         setEye(!eye);
 
      }
+     
      const signIn = async (e) => {
         e.preventDefault();
         if (email === "" || password === "") {
           return alert("Please fill all the fields");
         }
-      
+     
         try {
           const users = await signInWithEmailAndPassword(auth, email, password);
-          alert("Login successfully");
+         
           console.log("Login");
           setUser(users?.user)
           localStorage.setItem("user", JSON.stringify(users?.user))
@@ -53,13 +57,16 @@ function Login() {
           };
       
         } catch (error) {
-          console.log(error.message);
-          alert(error.message);
+          toast.error(error.message)
+         
         }
       };
 document.title ="Login"
   return (
-    <div className='w-full h-screen bg-black flex justify-center items-center'>
+    <div className='w-full h-screen bg-black flex justify-center items-center relative'>
+      {/* <div className='z-20 absolute top-[50%] left-[50%]'>
+        {loading&& <Loader/>}
+      </div> */}
         <form action="" className='w-96 h-[350px] bg-pink-300 rounded-md text-black capitalize flex justify-center items-center flex-col gap-6'>
             <h1 className='text-xl font-bold'>Login</h1>
         <div className=''>

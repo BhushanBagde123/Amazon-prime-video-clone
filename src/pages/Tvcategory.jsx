@@ -50,7 +50,7 @@ function Tvcategory() {
                 <Link to={`/detail/${item.id}`}>
                 
                   <div
-                    className={`md:w-[216px] w-72 h-[160px] xl:w-72 xl:h-40 md:h-[121px]  hidden md:block shrink-0 group-hover:opacity-90 sm:group-hover:opacity-0 transition  rounded-md `}
+                    className={`md:w-60 w-72 h-[160px] xl:w-72 xl:h-40 md:h-[135px]  hidden md:block shrink-0 group-hover:opacity-90 sm:group-hover:opacity-0 transition  rounded-md `}
                     style={{ backgroundImage: `url(${item.img})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
                   >
                 <div className='opacity-0 absolute top-[-75px]  capitalize font-bold transition duration-400 z-20  w-full hidden sm:block  scale-0 group-hover:scale-125  group-hover:translate-x-[2vw] group-hover:translate-y-[6vw] group-hover:opacity-100 '>

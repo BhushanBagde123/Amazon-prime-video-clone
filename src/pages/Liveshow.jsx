@@ -3,7 +3,7 @@ import Title from '../component/Title'
 
 
 function Liveshow() {
-  document.title ="prime video | Live Tv"
+  document.title ="Prime Video | Live Tv"
   const LiveShow ="live tv"
   return (
   <div>

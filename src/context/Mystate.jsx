@@ -11,10 +11,11 @@ function Mystate({children}) {
     const [drama,setDrama]=useState([]);
     const [topImdb,setTopImdb]=useState([]);
     const [like,setLike]=useState([]);
+    
    
 
     const getProducts =async()=>{
-      
+    
       try {
         const q= query(
           collection(fireDb,'movies'),
@@ -26,6 +27,7 @@ function Mystate({children}) {
             productArray.push({ ...doc.data(),id:doc.id});
           });
           setAllProducts(productArray);
+          
         
          const mysteryThriller =productArray.filter((p)=>p.category ==="mystery thrill")
        
@@ -41,13 +43,14 @@ function Mystate({children}) {
 
         const topImdbMovies=productArray.filter((p)=>p.imdb >=7);
         setTopImdb(...topImdb,topImdbMovies)
-          
+       
          
         });
         return ()=> data
         
       } catch (error) {
         console.log(error);
+       
        
       }
 

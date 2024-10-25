@@ -14,11 +14,16 @@ import Mystate from './context/Mystate';
 import Addmovies from './pages/Addmovies';
 import Tvcategory from './pages/Tvcategory';
 import Layout from './layout/Layout';
-import Wishlist from './pages/Wishlist';
+// import Wishlist from './pages/Wishlist';
 import Search from './pages/Search';
-import Genres from './pages/Genres';
+// import Genres from './pages/Genres';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
+import { lazy } from 'react';
+// lazy loading pages
+const Genres =lazy(()=>import('./pages/Genres'))
+const Wishlist =lazy(()=>import('./pages/Wishlist'))
+
 
 // Create the router object
 const router = createBrowserRouter([

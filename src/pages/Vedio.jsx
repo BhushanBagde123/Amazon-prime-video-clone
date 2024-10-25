@@ -63,7 +63,7 @@ function Vedio() {
     
    useEffect(()=>{
     if(product)
-    document.title =`prime video | ${product.name}`
+    document.title =`Prime Video | ${product.name}`
    },[product])
     
     

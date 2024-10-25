@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Search = () => {
     const {getAllProducts} =useContext(Mycontext);
-     document.title ="prime video | Search"
+     document.title ="Prime Video | Search"
     const [filter,setFilter]=useState([]);
     const [name,setName]=useState("")
     const searchElement =(e)=>{

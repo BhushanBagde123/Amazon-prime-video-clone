@@ -4,7 +4,7 @@ import Mycontext from '../context/Mycontext'
 function Home() {
   const context =useContext(Mycontext);
   const {user}=context
-  document.title ="prime video"
+  document.title ="Prime Video"
   return (
    <div>
     <div className='w-full lg:h-80 lg:flex h-[400px] lg:mt-2 flex flex-col-reverse lg:flex-row'>
@@ -30,7 +30,7 @@ function Home() {
         <h1 className='md:text-5xl md:font-bold font-bold text-3xl text-center md:text-left'>Your favorite channels all in one place</h1>
         <p className='md:text-2xl font-semibold text-lg text-center md:text-left'>With Prime Video Channels, find shows and movies from your favorite channels all in one place. Enjoy with an add-on subscription to Channels of your choice</p>
       </div>
-      <div className='grid md:grid-cols-3 gap-3 grid-cols-2  md:gap-1  p-2  md:w-[50%] w-full h-1/2'>
+      <div className='grid md:grid-cols-3 gap-3  grid-cols-2  md:h-full md:gap-1  p-2  md:w-[50%] w-full h-1/2 '>
         <div className=''>
           <img className='w-full h-full' src="https://m.media-amazon.com/images/G/31/AmazonVideo/2021/Channels/MLP/LionsgatePlay-426X2946_V1.jpg" alt="" />
         </div>

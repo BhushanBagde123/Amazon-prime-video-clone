@@ -55,7 +55,7 @@ const HeroSlider = () => {
   };
 
   return (
-    <div className="relative w-full lg:h-[600px] h-[300px] sm:h-[350px] md:h-[400px] overflow-hidden cursor-pointer">
+    <div className=" w-full lg:h-[600px] h-[300px] sm:h-[350px] md:h-[400px] overflow-hidden cursor-pointer relative">
       <Slider {...settings} ref={slider}>
         {trending.slice(0,6).map((item) => (
           
@@ -83,6 +83,7 @@ const HeroSlider = () => {
                 
               )}
               <img className='w-full h-full lg:hidden' src={`${item.coverImg}`} alt={ `${item.name}image`} />
+             
               <div className="absolute inset-0 bg-black linergreed"></div>
               {hover && (
                 <button 
@@ -94,7 +95,7 @@ const HeroSlider = () => {
                 </button>
               )}
               <div className="absolute bottom-0 p-8">
-              <Link to={`/detail/${item.id}`}>  <h2 className="text-white lg:text-5xl capitalize text-xl font-bold">{item.name}</h2> </Link>
+              <Link to={`/detail/${item.id}`}>  <h2 className="text-white lg:text-5xl md:text-3xl capitalize text-xl font-bold">{item.name}</h2> </Link>
               </div>
             </div>
            

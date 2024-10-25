@@ -48,25 +48,26 @@ function Moviecategory() {
     
     
   }
-  document.title = `prime video | ${categoryNames}`
+  document.title = `Prime Video | ${categoryNames}`
  
  
   return (
  
      <div className='w-full h-auto mt-7'>
+     
   <h1 className='md:text-3xl text-2xl p-3 md:px-4 font-bold text-white capitalize'>
     {category}
   </h1>
 
   {/* Display filtered movies */}
-  <div className='w-full grid  lg:grid-cols-4 md:grid-cols-3 gap-4 md:gap-3 md:p-3 pt-4 overflow-hidden md:mt-9 movies-grid'>
+  <div className='w-full grid  lg:grid-cols-4 md:grid-cols-3 gap-4 md:gap-3     md:p-3 pt-4 overflow-hidden md:mt-9 movies-grid'>
     {moviesToDisplay.length > 0 ? (
       moviesToDisplay.map((item, index) => (
-        <div key={item.id} className='lg:w-72 w-full md:w-60 flex justify-between h-full group relative'>
+        <div key={item.id} className='lg:w-72 w-full md:w-60 flex  justify-between h-full group relative'>
           <Link to={`/detail/${item.id}`}>
             {/* Main movie image with hover effect */}
             <div
-              className={`md:w-[216px] hidden md:block xl:w-72 xl:h-40 w-72 h-[160px] md:h-[121px] lg:group-hover:opacity-0 rounded-md`}
+              className={`md:w-60 hidden md:block xl:w-72 xl:h-40 w-72 h-[160px] md:h-[135px] lg:group-hover:opacity-0 rounded-md`}
               style={{ backgroundImage: `url(${item.img})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
             >
               {/* Popup detail image with scaling and visibility on hover */}

@@ -1,4 +1,4 @@
-import React, { useState,useEffect,useContext } from 'react'
+import React, { useState,useEffect,useContext, Suspense } from 'react'
 
 import { Link, useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom';
@@ -10,6 +10,9 @@ import { IoAdd } from "react-icons/io5";
 import { MdOutlineVideoLibrary } from "react-icons/md";
 import { IoMdCheckmark } from "react-icons/io";
 import { toast } from 'react-toastify';
+import Loader from '../component/Loader';
+
+
 
 function Detail() {
   const [product,setProduct]=useState('');
@@ -19,17 +22,21 @@ function Detail() {
     const context = useContext(Mycontext);
     const { myst, horror, romance,drama,user,like,setLike } = context; 
     const [mark,setMark]=useState(false);
-   
+    const [loading,setLoading]=useState(false);
     
     const getProductData =async()=>{
+      setLoading(true)
    
         try {
             const singleProductInfo =await getDoc(doc(fireDb,'movies',id));
             setProduct(singleProductInfo.data());
+            setLoading(false)
+
           
             
         } catch (error) {
             console.log(error.message);
+            setLoading(false)
             
         }
     }
@@ -70,7 +77,7 @@ function Detail() {
       toast.warning("you are not login")
     }
     };
-    console.log(like)
+   
     useEffect(()=>{
         getProductData()
        
@@ -89,7 +96,10 @@ function Detail() {
     <>
     {/* // display movies data from firebase */}
     <div className={`w-full lg:h-[680px] md:h-[500px]   relative  `} >
-    <picture className='w-full h-full'>
+    <picture className='w-full h-full relative'>
+      <div className='z-20 absolute top-[50%] left-[50%]'>
+       {loading&& <Loader/>} 
+      </div>
   <source type='image/webp' srcSet={`${product.coverImg}`} />
   <img src={`${product.coverImg}`} alt='Product Cover' className=' w-full md:h-full h-[220px] sm:h-[300px] relative' />
 </picture>
@@ -152,7 +162,9 @@ function Detail() {
     
     <div className='w-full h-80   md:p-3 mt-4 lg:mt-0 '>
       <h1 className='md:text-2xl text-xl  font-bold capitalize px-4 md:px-3'>related movies</h1>
+     
       <Slider moviesDisplay={moviesDisplay}/>
+     
     </div>
     
     

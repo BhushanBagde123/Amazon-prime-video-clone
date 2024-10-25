@@ -10,13 +10,14 @@ function Movies() {
  const context = useContext(Mycontext)
  const {myst,horror,romance,drama,topImdb} =context  //destucture elements form context
  
-  document.title="prime video | Movies"
+  document.title="Prime Video | Movies"
 
   return (
     <>
   <Heroslider/>
   {/* passing props */}
   <Title movie={movie}/>
+  
   <Category myst={myst} categoryOne={"mystery&thriller movies"}/>
   <Category horror={horror} categoryTwo={"horror movies"}/>
   <Category romance={romance} categoryThree={"romance movies"}/>

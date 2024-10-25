@@ -8,7 +8,7 @@ const Genres = () => {
     const { getAllProducts } = useContext(Mycontext);
     const [activeSection, setActiveSection] = useState('all');
     
-    document.title ="prime video | Browsers"
+    document.title ="Prime Video | Browsers"
 
     const handleSectionClick = (section) => {
         setActiveSection(section);

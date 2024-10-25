@@ -52,16 +52,16 @@ function Wishlist() {
           <h5>Watchlist - Movies</h5>
         </div>
 
-        <div className='w-full h-full  py-1 lg:mt-4 grid grid-cols-2 lg:grid-cols-4 sm:grid-cols-3 gap-3'>
+        <div className='w-full h-full  py-1 lg:mt-4 grid grid-cols-2 md:grid-flow-col-3 lg:grid-cols-4 sm:grid-cols-3 gap-3'>
           {wishlist.length > 0 ? (
             wishlist.map((item, id) => (
-              <div key={id} className='cursor-pointer group lg:relative md:w-[270px]  '>
+              <div key={id} className='cursor-pointer group lg:relative md:w-[270px]   '>
                 <img
-                  className='md:w-[270px]  w-44 h-28 md:h-[100%] rounded-md lg:group-hover:opacity-0'
+                  className='lg:w-[240px] xl:w-[270px] xl:h-full  w-44 h-24 lg:h-[100%] md:w-60 md:h-full rounded-md xl:group-hover:opacity-0'
                   src={item.img}
-                  alt=""
+                  alt="images"
                 />
-                <div className='hidden lg:block lg:opacity-0 group-hover:opacity-100 absolute top-[-75px] scale-110 transition duration-400 z-20 group-hover:translate-x-[2vw] group-hover:translate-y-[4vw]'>
+                <div className='hidden xl:block xl:opacity-0 group-hover:opacity-100 absolute top-[-75px] scale-110 transition duration-400 z-20 group-hover:translate-x-[2vw] group-hover:translate-y-[4vw]'>
                   <img
                     className='object-cover transition duration shadow-xl rounded-t-md w-full h-[12vw]'
                     src={item.img}
