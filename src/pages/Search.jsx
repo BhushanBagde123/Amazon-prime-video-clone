@@ -22,7 +22,7 @@ const Search = () => {
             <input className='w-[80%] h-full text-black p-1 rounded-md ' type="search" placeholder='search' value={name} onChange={searchElement} />
         </div>
         <div className='w-full h-auto  flex flex-col justify-center items-center'>
-            {filter.map((movies,)=>{
+            {filter.slice(0,10).map((movies,)=>{
                 return (
                     <>
                     <div className='flex w-1/2 items-center overflow-auto'>
