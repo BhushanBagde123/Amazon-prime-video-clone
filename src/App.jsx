@@ -7,7 +7,7 @@ import Liveshow from './pages/Liveshow';
 import Moviecategory from './pages/Moviecategory';
 import Categorypage from './pages/Categorypage';
 import Detail from './pages/Detail';
-import Vedio from './pages/vedio';
+import Video from './pages/Video';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Mystate from './context/Mystate';
@@ -91,7 +91,7 @@ const router = createBrowserRouter([
 },
 {
   path: '/video/:id',
-  element: <Vedio />,
+  element: <Video />,
 },{
   path:'/search',
   element:<Search/>,

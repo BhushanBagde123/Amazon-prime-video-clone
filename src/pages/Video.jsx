@@ -8,7 +8,7 @@ import { IoMdPause } from "react-icons/io";
 import { CgMinimize } from "react-icons/cg";
 import ReactPlayer from 'react-player';
 
-function Vedio() {
+function Video() {
   const [product,setProduct]=useState('');
     const {id}=useParams(); //contain id of a url
     const video = useRef(null);
@@ -105,4 +105,4 @@ function Vedio() {
   )
 }
 
-export default Vedio
+export default Video
